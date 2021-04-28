@@ -191,32 +191,39 @@ INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/antt/ex-anttl.tfm
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/lm/ec-lmb10.tfm
+INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/lm/ec-lmbo10.tfm
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/lm/ec-lmri10.tfm
-INPUT /usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map
-INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/lm/ec-lmr8.tfm
-INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/lm/ec-lmr6.tfm
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/lm/omslmr.fd
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/lm/omslmr.fd
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/lm/omslmsy.fd
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/lm/omslmsy.fd
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/lm/lmsy10.tfm
-INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/ucs/data/uni-32.def
-INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/ucs/data/uni-32.def
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/listings/lstlang1.sty
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/listings/lstlang1.sty
+INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/lm/ec-lmb10.tfm
+INPUT /usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/lm/t1lmtt.fd
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/lm/t1lmtt.fd
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/lm/ec-lmtt10.tfm
+INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/lm/ec-lmr8.tfm
+INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/lm/ec-lmtt8.tfm
+INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/lm/ec-lmr6.tfm
+INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/lm/ec-lmtt8.tfm
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/ucs/data/uni-32.def
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/ucs/data/uni-32.def
 INPUT /Users/sarabizjak/Documents/IŠRM magistrski/2. semester/Algoritmi/Algoritmi/HW/HW3/dn3.aux
 INPUT /Users/sarabizjak/Documents/IŠRM magistrski/2. semester/Algoritmi/Algoritmi/HW/HW3/dn3.out
 INPUT /Users/sarabizjak/Documents/IŠRM magistrski/2. semester/Algoritmi/Algoritmi/HW/HW3/dn3.out
-INPUT /usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc
-INPUT /usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/antt/antt-ex.enc
+INPUT /usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/antt/antt-sy.enc
+INPUT /usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/antt/antt-rm.enc
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/antt/antt-mi.enc
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/type1/public/antt/anttl.pfb
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/type1/public/antt/anttli.pfb
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmb10.pfb
+INPUT /usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmbo10.pfb
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmr10.pfb
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmr12.pfb
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmr17.pfb

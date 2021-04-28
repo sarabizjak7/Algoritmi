@@ -45,15 +45,83 @@
 
 \section*{Problem 1 - Konveksna ovojnica}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \noindent
 Naj bosta $S_1$ in $S_2$ konveksni ovojnici v ravnini. 
 
-\subsection*{A del:} Algoritem za izračun unije teh dveh ovojnic.
+\subsection*{A del: \textit{Algoritem za izračun unije teh dveh ovojnic.}} 
+\noindent
+Algoritem sprejme dve ovojnici, točke so urejene od skrajno leve po x-koordinati in potem po vrsti v nasprotni smeri urinega kazalca.
+\\
+Ideja je, da vsako ovojnico naprej razdelimo na zgornjo in spodnjo pot (spodnje in zgornje točke). 
+Dobimo ju tako, da za vsako ovojnico posebej poiščemo skrajno levo in skrajno desno točko po x-koordinati. 
+Nato potujemo od leve proti desni v nasprotni smeri urinega kazalca, kar nam poda spodnjo pot in od desne proti levi v nasprotni smeri urinega kazalca, kar nam poda zgornjo pot.
+Obe zgornji in spodnji poti vsake ovojnice združimo v eno (enako urejeno kot opisano zgoraj) pot.
+Iz teh dveh poti zgradimo ovojnico, zgornjo in spodnjo posebej. 
+To naredimo tako, da točke dodajamo po vrsti, eno po eno (inkrementalno). Ko želimo točko dodati, opazujemo orientacijo oz. smer zavoja, ki mora biti t.~i.~zavoj v levo.
+Na koncu zgornjo in spodnjo ovojnico le še združimo, kar je tudi izhod algoritma.
+\\
+Algoritem je prirejen po predavanjih in vajah pri predmetu \textit{Računska geometrija, FMF}.
+\\
+Predpostavke, po katerih deluje opisan algoritem:
+\begin{itemize}
+    \item $S_1$ in $S_2$ sta konveksni ovojnici.
+    \item Točke so zapisane v obratni smeri urinega kazalca, začenši z najbolj levo po x-koordinati.
+    \item Če $S_1$ vsebovana v $S_2$, je unija konveksnih ovojnic $S_2$ in obratno.
+    \item Algoritem deluje tudi, če so tri točke vhodne konveksne ovojnice kolinearne.
+\end{itemize}
+Psevdo-koda opisanega algoritma:
+\begin{lstlisting}[language=Python]
+-----------------------------------------------------------------------
+    def unija(S1, S2):
+        S1_zgornja_pot, S1_spodnja_pot = razdeli(S1)
+        S2_zgornja_pot, S2_spodnja _pot= razdeli(S2)
+        zgornja_pot = S1_zgornja_pot +  S2_zgornja_pot
+        spodnja_pot = S1_spodnja_pot +  S2_spodnja_pot
+        zgornja_ovojnica = naredi_zgornjo_ovojnico(zgornja_pot)
+        spodnja_ovojnica = naredi_spodnjo_ovojnico(spodnja_pot)
+        ovojnica = zdruzi(zgornja_ovojnica, spodnja_ovojnica)
+        vrni zdruzeno
+-----------------------------------------------------------------------
+\end{lstlisting}
+Podrobnosti delovanja algoritma so vidne v priloženi datoteki \texttt{dn3\_code.py}.
 
-\subsection*{B del:} Algoritem, ki preveri, če se konveksni ovojnici sekata.
+\subsection*{B del: \textit{Algoritem, ki preveri, če se konveksni ovojnici sekata.}}
+Konveksni ovojnici $S_1$ in $S_2$ se sekata, če obstaja vsaj eno presečišče med stranicama iz $S_1$ in $S_2$. 
+Algoritem generira vse pare med stranicami ene in druge konveksne ovojnice in za vsak par preveri ali se sekata. 
+Če obstaja vsaj en tak par, ki se seka, potem vrne $\texttt{True}$, sicer vrne $\texttt{False}$.
+\\
+Za ugotavljanje presečišč med dvema daljicama je uporabljena funkcija iz knjižnice \texttt{shapely}.
+\\
+Predpostavke, po katerih deluje opisan algoritem:
+\begin{itemize}
+    \item Če je ena konveksna ovojnica popolnoma vsebovana v drugi, se ne sekata.
+    \item Če sta konveksni ovojnici enaki, se sekata.
+    \item Če se konveksni ovojnici zgolj dotikata, se sekata.
+\end{itemize}
+Psevdo-koda opisanega algoritma:
+\begin{lstlisting}[language=Python]
+-----------------------------------------------------------------------
+    def presek(S1, S2):
+        seznam_presecisc = []
+        pari_stranic = generiraj_pare(S1, S2)
+        za vsak par iz pari_stranic:
+            dodaj se_sekata(par) v seznam_presecisc
+        ce True vsebovan v seznam_presecisc:
+            vrni True
+        sicer: 
+            vrni False         
+-----------------------------------------------------------------------
+\end{lstlisting}
+Podrobnosti delovanja algoritma so vidne v priloženi datoteki \texttt{dn3\_code.py}.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\subsection*{C del:}
+Koda je dostopna v priloženi datoteki \texttt{dn3\_code.py}.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -69,18 +137,18 @@ Opazujmo množico $n$ točk $P$, ki leži na pozitivni veji parababole $y = x^2$
 \end{align*}
 kjer so $t_1, t_2, \ldots t_n$ pozitivna realna števila. BŠS predpostavimo $0 < t_1 < \cdots < t_n$.
 \\
-Trdimo, da je v Delaunay triangulaciji $P$-ja najbolj leva točka $(t_1, t_1^2)$ sosednja z vsako drugo točko iz $P$. To pomeni, da z dodajanjem vsake nove točke $(t_0, t_0^2)$ v $P$, tako da velja $0 < t_0 < t_1$ (torej bo ta na novo dodana točka najbolj leva), generiramo tudi $n$ novih robov Delaunay triangulaciji. 
+Trdimo, da je v Delaunay triangulaciji $P$-ja najbolj leva točka $(t_1, t_1^2)$ sosednja (povezana) z vsako drugo točko iz $P$. 
 Če torej dodajamo točke od desne proti levi, je število robov v Delaunayevi triangulaciji enako $\Omega(n^2)$.
 \\
 \\
 \textit{Dokaz.} \\
-Naj bodo $0 < a < b < c$ pozitivna realna števila in naj bo $\mathcal{C}(a, b, c)$ krožnica skozi točke $(a, a^2), (b, b^2), (c, c^2)$, ki tvorijo trikotnik v triangulaciji.
+Pokažimo to s protislovjem in recimo, da zadnja dodana točka (najbolj leva), označimo jo z $(d, d^2)$, ni povezana z vsemi ostalimi. 
+Tedaj obstajajo $0 < a < b < c$ pozitivna realna števila različna od $d$, tako da točke $(a, a^2), (b, b^2), (c, c^2)$ tvorijo trikotnik v triangulaciji.
 \\
-Trdimo, da $\mathcal{C}(a, b, c)$ ne vsebuje nobene take točke $d$, kjer
-\begin{align*}
-    a < d < b \ \text{ali} \ c < d
-\end{align*} 
-Pokažimo to s protislovjem in recimo, da točka $(d, d^2)$ leži na krožnici $\mathcal{C}(a, b, c)$. To je natanko tedaj, ko velja
+Ker po definiciji Delaunay triangulacije krog skozi tri točke iz $P$ ne vsebuje nobene druge točke,
+želimo pokazati, da $\mathcal{C}(a, b, c)$ ne vsebuje nobene take točke $d$.
+\\
+Točka $(d, d^2)$ leži na krožnici $\mathcal{C}(a, b, c)$ natanko tedaj, ko velja
 \begin{align*}
     \begin{vmatrix}
         1 & a & a^2 & a^2 + a^4 \\
@@ -110,9 +178,11 @@ Iz tega sledi, da točka $(d, d^2)$ leži znotraj krožnice $\mathcal{C}(a, b, c
     \ 
     b < d < c
 \end{align*}    
-Sklepi nam podajo protislovje.
+Sklepi nam podajo protislovje, torej zadnja dodana točka res porodi robove z Delanuay triangulaciji z vsemi ostalimi točkami v $P$.
 \\
-Če torej dodajamo točke, kot je opisano v primeru, je časovna zahtevnost algoritma res s$\Omega(n^2)$.
+Če torej dodajamo točke, kot je opisano v primeru, je časovna zahtevnost algoritma res $\Omega(n^2)$.
+\\
+Primer je povzet po \cite{stack}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{Problem 3 - Iskanje točk s kd, četrtinskimi in intervalnimi drevesi}
@@ -142,15 +212,20 @@ Enako ponavljamo na otrocih z več kot eno vsebovano točko. Algoritem zaključi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newpage
 \begin{thebibliography}{99}
     \bibitem{delaunay}
     Mark De Berg, Marc Van Kreveld, Mark Overmars, and Otfried CheongSchwarzkopf.    Computational  geometry.    In \emph{Computational  geometry}, pages 1–17. Springer, 2000.
 
     \bibitem{clanek}
     Don Sheehy, \emph{Computational Geometry: Lecture 7}, 2010, [ogled 15.~4.~2021], dostopno na
-    \url{www.cs.cmu.edu/afs/cs/academic/class/15456-s10/ClassNotes/lecture7.pdf}
+    \url{www.cs.cmu.edu/afs/cs/academic/class/15456-s10/ClassNotes/lecture7.pdf}.
 
+    \bibitem{stack}
+    \emph{Worst case of the randomized incremental Delaunay triangulation algorithm}, [ogled 15.~4.~2021], dostopno na \url{cstheory.stackexchange.com/questions/12147/what-is-the-worst-case-of-the-randomized-incremental-delaunay-triangulation-algo}.
+
+    \bibitem{RG}
+    \emph{Convex polygons}, [ogled 15.~4.~2021], dostopno na \url{hackmd.io/@US4ofdv7Sq2GRdxti381_A/ryFmIZrsl?type=view}.
+    
 \end{thebibliography}
     
 \end{document}
