@@ -193,7 +193,7 @@ Vsaka izmed teh struktur ima dotično prednost pred ostalimi pri določenih pogo
 
 \begin{itemize}
     \item \textit{Kd-drevo -- linearna prostorska zahtevnost $\mathcal{O}(n)$.} Prostorska zahtevnost intervalnih dreves je $\mathcal{O}(n \log^{d - 1}(n))$, kjer je $n$ število shranjenih točk v drevesu, $d$ pa njihova dimenzija, četrtinskih pa $\mathcal{O}((g + 1) n)$. Tukaj z $g$ označimo globino drevesa, ki pa je logaritemsko odvisna od razmerja med najmanjšo razdaljo med dvema točkama in stranico začetnega kvadrata. Ker je v teoriji tako razmerje lahko poljubno, je lahko potem tudi prostorska zahtevnost poljubna (velika). 
-    \item \textit{Četrtinsko drevo -- dodajanje novih točk v že zgrajeno drevo.} Če v že zgrajeno drevo dodamo nove točke, se četrtinsko drevo ne bo spremenilo, medtem ko sta lahko po dodajanju kd-drevo in intervalno drevo precej spremenjeni in drugačni, kot če bi imela že na začetku na razpolago vse točke.
+    \item \textit{Četrtinsko drevo -- dodajanje novih točk v že zgrajeno drevo.} Če v drevo po vrsti dodajamo nove točke, bo četrtinsko drevo identično, kot če bi vse točke dodali hkrati, medtem ko sta lahko po dodajanju kd-drevo in intervalno drevo precej spremenjeni in drugačni (lahko tudi neuravnoteženi), kot če bi imela že na začetku na razpolago vse točke.
     \item \textit{Intervalno drevo -- hitrejše poizvedbe.} Iskanje v intervalnem drevesu je navzgor omejeno z $\mathcal{O}(\log^d n)$, iskanje v kd-drevesu poteka v $\mathcal{O}(n)$. V primerjavi s četrtinskim drevesom pa ima boljši čas za iskanje tuidi v primerih, ko so točke manj ugodno razporejene. Taka razporeditev je opisana v prvi alineji.
 \end{itemize}
     
