@@ -14,6 +14,8 @@ def modularnoPotenciranje(a, b, n):
         # trenutni bit liho stevilo
         if b % 2 == 1:       
             d = (osnova * d) % n
+            b = b // 2
+            osnova = (osnova ** 2) % n
         # trenutni bit sodo stevilo
         else:
             b = b // 2
@@ -23,8 +25,16 @@ def modularnoPotenciranje(a, b, n):
     return osnova
 
 
-#( TESTI )#
 """
+#( TESTI )#
+
+# Primer iz ucbenika
+a = 7
+b = 560
+n = 561
+print(modularnoPotenciranje(a, b, n))
+print((a ** b) % n)
+
 a1 = 106
 b1 = 178
 n1 = 908
