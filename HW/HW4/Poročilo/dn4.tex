@@ -67,9 +67,13 @@ $$
 \texttt{LCM$_{rek}$}([\text{lcm}_2(a_1, a_2), a_3, \ldots, a_n])
 $$
 kar pomeni, da je zaporedje ukazov znotraj funkcije \texttt{LCM$_{rek}$} enako
-$$
-[\text{lcm}_2( \ldots (\text{lcm}_2(\text{lcm}_2(a_1, \ a_2), \ a_3) \ldots), \ a_n)]
-$$
+\begin{align*} 
+\text{lcm}_2( \ldots (\text{lcm}_2(\text{lcm}_2(a_1, \ a_2), \ a_3) \ldots), \ a_n)
+\end{align*}
+oziroma, razpisano s funkcijo \texttt{gcd}, enako
+\begin{align*}
+\frac{a_1 \cdot a_2 \cdot \ \cdots \ \cdot a_n}{\text{gcd}( \ldots (\text{gcd}(\text{gcd}(a_1, \ a_2), \ a_3) \ldots), \ a_n)}
+\end{align*}
 \subsection*{B del: \textit{Modularno potenciranje}}
 Algoritem za modularno potenciranje je predstavljen v [\cite{vir}, chapter 31]. Sestavimo algoritem za modularno potenciranje, ki $b$ bitov obhodi iz desne proti levi namesto iz leve prosti desni.
 \\
